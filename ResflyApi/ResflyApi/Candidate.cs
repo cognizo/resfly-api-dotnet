@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -88,6 +89,23 @@ namespace Resfly
             this.ResumeUrl = candidate.ResumeUrl;
             
             return true;
+        }
+        
+        public List<Job> GetJobs()
+        {
+            Response response = this.ResflyApi.MakeRequest("/candidates/" + this.Id, "GET");
+            
+            List<Job> jobs = new List<Job>();
+            
+            if (response.Jobs != null)
+            {
+                foreach (Response jobResponse in response.Jobs)
+                {
+                    jobs.Add(jobResponse.Job);
+                }
+            }
+            
+            return jobs;
         }
     }
 }
