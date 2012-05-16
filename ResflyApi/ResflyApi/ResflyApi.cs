@@ -95,17 +95,6 @@ namespace Resfly
             
             return apiResponse;
         }
-    
-        public Company CreateCompany(Company company)
-        {
-            Response response = MakeRequest(
-                "/companies",
-                "POST",
-                SerializeToJson(company)
-            );
-            
-            return response.Company;
-        }
         
         public Company GetCompany(int Id)
         {
@@ -132,20 +121,6 @@ namespace Resfly
             }
             
             return companies;
-        }
-        
-        public Job CreateJob(Job job)
-        {
-            Response response = MakeRequest(
-                "/jobs",
-                "POST",
-                SerializeToJson(job)
-            );
-            
-            job = response.Job;
-            job.ResflyApi = this;
-            
-            return job;
         }
         
         public Job GetJob(int Id)
