@@ -23,7 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -32,37 +31,37 @@ using System.Runtime.Serialization.Json;
 
 namespace Resfly
 {
-	[DataContract]
-	public class Response
-	{
-		public HttpWebResponse HttpWebResponse { get; set; }
-		
-		public string ResponseString { get; set; }
-		
-		[DataMember(Name = "company")]
-		public Company Company { get; set; }
-		
-		[DataMember(Name = "companies")]
-		public List<Response> Companies { get; set; }
-		
-		[DataMember(Name = "job")]
-		public Job Job { get; set; }
-		
-		[DataMember(Name = "jobs")]
-		public List<Response> Jobs { get; set; }
-		
-		[DataMember(Name = "candidate")]
-		public Candidate Candidate { get; set; }
-		
-		[DataMember(Name = "candidates")]
-		public List<Response> Candidates { get; set; }
-		
-		[DataMember(Name = "errors")]
-		public List<Response> Errors { get; set; }
-		
-		public Response()
-		{			
-		}
-	}
+    [DataContract]
+    public class Response
+    {
+        public HttpWebResponse HttpWebResponse { get; set; }
+        
+        public string ResponseString { get; set; }
+        
+        [DataMember(Name = "company")]
+        public Company Company { get; set; }
+        
+        [DataMember(Name = "companies")]
+        public List<Response> Companies { get; set; }
+        
+        [DataMember(Name = "job")]
+        public Job Job { get; set; }
+        
+        [DataMember(Name = "jobs")]
+        public List<Response> Jobs { get; set; }
+        
+        [DataMember(Name = "candidate")]
+        public Candidate Candidate { get; set; }
+        
+        [DataMember(Name = "candidates")]
+        public List<Response> Candidates { get; set; }
+        
+        [DataMember(Name = "errors")]
+        public List<Response> Errors { get; set; }
+        
+        public Response()
+        {           
+        }
+    }
 }
 

@@ -23,25 +23,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
 namespace Resfly
 {
-	[DataContract]
-	public class Salary
-	{
-		[DataMember(Name = "amount")]
-		public decimal Amount { get; set; }
-		
-		[DataMember(Name = "type")]
-		public string Type { get; set; }
-		
-		public Salary()
-		{
-		}
-	}
+    [DataContract]
+    public class Salary
+    {
+        [DataMember(Name = "amount")]
+        public decimal Amount { get; set; }
+        
+        [DataMember(Name = "type")]
+        public string Type { get; set; }
+        
+        public Salary()
+        {
+        }
+    }
 }
 
