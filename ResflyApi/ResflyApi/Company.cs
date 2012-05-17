@@ -57,6 +57,12 @@ namespace Resfly
         [DataMember(Name = "job_slots")]
         public int JobSlots { get; set; }
         
+        [DataMember(Name = "job_slots_used")]
+        public int JobSlotsUsed { get; set; }
+        
+        [DataMember(Name = "job_slots_available")]
+        public int JobSlotsAvailable { get; set; }
+        
         public Company(ResflyApi resflyApi)
         {
             this.ResflyApi = resflyApi;
