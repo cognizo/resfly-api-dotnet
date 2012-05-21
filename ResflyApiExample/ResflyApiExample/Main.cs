@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Net;
 using Resfly;
 
 namespace ResflyApiExample
@@ -34,7 +35,7 @@ namespace ResflyApiExample
         public static void Main(string[] args)
         {
             // Initialize API
-            ResflyApi resflyApi = new ResflyApi("https://api.resfly.com", "API-KEY");
+            ResflyApi resflyApi = new ResflyApi("http://api.resfly.dev", "ad0491611c7347fedcff64c7b1fda2ff7d37ac68");
             
             // Create a company
             Company company = new Company(resflyApi);
@@ -95,6 +96,22 @@ namespace ResflyApiExample
             
             // Delete the job
             job.Delete();
+            
+            // Error checking
+            Company badCompany = new Company(resflyApi);            
+            
+            try
+            {                
+                badCompany.Save();
+            }
+            catch (WebException ex)
+            {
+                foreach (string errorMessage in resflyApi.Errors)
+                {
+                    Console.WriteLine(errorMessage);
+                }
+            }
+            
         }
     }
 }

@@ -32,9 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="ResflyApi">
-      <HintPath>ResflyApi.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -50,4 +47,10 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ResflyApi\ResflyApi\ResflyApi.csproj">
+      <Project>{58DCFA5A-5B11-4FF3-A70B-9992FDAA41EE}</Project>
+      <Name>ResflyApi</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

@@ -59,6 +59,9 @@ namespace Resfly
         [DataMember(Name = "errors")]
         public List<Response> Errors { get; set; }
         
+        [DataMember(Name = "error")]
+        public string Error { get; set; }
+        
         public Response()
         {           
         }

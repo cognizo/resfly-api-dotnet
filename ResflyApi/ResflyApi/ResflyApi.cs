@@ -38,10 +38,13 @@ namespace Resfly
         
         public string ApiKey { get; set; }
         
+        public List<string> Errors { get; set; }
+        
         public ResflyApi(string url, string apiKey)
         {
             this.Url = url;
             this.ApiKey = apiKey;
+            this.Errors = new List<string>();
         }
         
         public Response MakeRequest(string uri, string method, string json = "")
@@ -70,13 +73,26 @@ namespace Resfly
                     break;
             }
             
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();              
+            HttpWebResponse response;
+            bool isError = false;
+            WebException exception = null;
+            
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();              
+            }
+            catch (WebException ex)
+            {
+                isError = true;
+                response = (HttpWebResponse)ex.Response;                
+                exception = ex;
+            }
 
             Stream stream = response.GetResponseStream();
             string responseString = "";
             using (StreamReader reader = new StreamReader(stream))
             {
-                responseString = reader.ReadToEnd();
+                responseString = reader.ReadToEnd();                
             }           
 
             Response apiResponse = new Response();
@@ -92,6 +108,16 @@ namespace Resfly
             
             apiResponse.HttpWebResponse = response;
             apiResponse.ResponseString = responseString;
+            
+            if (isError)
+            {
+                foreach (Response errorResponse in apiResponse.Errors)
+                {
+                    this.Errors.Add(errorResponse.Error);                    
+                }                
+                
+                throw exception;
+            }
             
             return apiResponse;
         }
