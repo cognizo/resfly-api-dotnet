@@ -35,7 +35,7 @@ namespace ResflyApiExample
         public static void Main(string[] args)
         {
             // Initialize API
-            ResflyApi resflyApi = new ResflyApi("http://api.resfly.dev", "ad0491611c7347fedcff64c7b1fda2ff7d37ac68");
+            ResflyApi resflyApi = new ResflyApi("https://api.resfly.com", "API-KEY");
             
             // Create a company
             Company company = new Company(resflyApi);
