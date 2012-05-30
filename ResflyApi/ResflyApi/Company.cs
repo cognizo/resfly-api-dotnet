@@ -48,6 +48,9 @@ namespace Resfly
         [DataMember(Name = "name")]
         public string Name { get; set; }
         
+        [DataMember(Name = "status")]
+        public string Status { get; set; }
+        
         [DataMember(Name = "type")]
         public string Type { get; set; }
                 
@@ -118,6 +121,26 @@ namespace Resfly
             );
             
             if (response.HttpWebResponse.StatusCode != HttpStatusCode.NoContent)
+            {
+                return false;
+            }
+            
+            return true;
+        }
+        
+        public bool Suspend()
+        {
+            if (this.Id > 1)
+            {
+                return false;
+            }
+            
+            Response response = this.ResflyApi.MakeRequest(
+                "/companies/" + this.Id + "/suspend",
+                "PUT"
+            );
+            
+            if (response.HttpWebResponse.StatusCode != HttpStatusCode.OK)
             {
                 return false;
             }

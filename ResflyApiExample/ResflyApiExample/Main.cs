@@ -97,6 +97,9 @@ namespace ResflyApiExample
             // Delete the job
             job.Delete();
             
+            // Suspend the company and close all published jobs
+            company.Suspend();
+            
             // Error checking
             Company badCompany = new Company(resflyApi);            
             
