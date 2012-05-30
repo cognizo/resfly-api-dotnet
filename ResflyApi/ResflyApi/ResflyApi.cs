@@ -54,7 +54,8 @@ namespace Resfly
             request.Accept = "application/json";
             request.Method = method;
             request.Headers.Add("X-Api-Key", this.ApiKey);
-            
+            request.ContentLength = 0;
+
             switch (method)
             {
                 case "POST":
@@ -92,7 +93,8 @@ namespace Resfly
             string responseString = "";
             using (StreamReader reader = new StreamReader(stream))
             {
-                responseString = reader.ReadToEnd();                
+                responseString = reader.ReadToEnd();
+                Console.WriteLine(responseString);
             }           
 
             Response apiResponse = new Response();
